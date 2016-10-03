@@ -6,7 +6,7 @@
 
   function homeController($http) {
 
-    const URL_API = 'http://fipeapi.appspot.com/api/1';
+    const URL_API = 'https://fipeapi.appspot.com/api/1';
 
     var vm = this;
 
