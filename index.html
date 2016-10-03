@@ -1,0 +1,201 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tabela Picanço</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="tabelapicanco.ico" />
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+  <link rel="stylesheet" href="styles/app.css" media="screen" title="no title">
+</head>
+
+<body ng-app="tabelapicanco">
+
+  <div layout="column" layout-fill ng-controller="HomeController as vm">
+
+    <md-toolbar md-scroll-shrink>
+      <div class="md-toolbar-tools">
+        <h3>
+          <md-icon md-font-set="material-icons">motorcycle</md-icon>
+          <span>Tabela Picanço <sup>motos</sup></span>
+        </h3>
+      </div>
+    </md-toolbar>
+
+    <md-content flex>
+
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Veículo</span>
+            <span class="md-subhead">Dados do seu veículo</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedFabricanteId" required>
+              <md-option ng-repeat="fabricante in vm.fabricantes" value="{{fabricante.id}}" placeholder="Selecione o fabricante">
+                {{fabricante.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedModeloId" md-on-open="vm.loadModelos()" ng-show="vm.selectedFabricanteId" required>
+              <md-option ng-repeat="modelo in vm.modelos" value="{{modelo.id}}" placeholder="Selecione o modelo">
+                {{modelo.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedAnoModeloId" md-on-open="vm.loadAnosModelo()" ng-show="vm.selectedModeloId" ng-change="vm.loadDadosVeiculo()" required>
+              <md-option ng-repeat="anoModelo in vm.anosModelo" value="{{anoModelo.id}}" placeholder="Selecione o ano do modelo">
+                {{anoModelo.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <div ng-show="vm.selectedVeiculo">
+
+          <md-input-container class="md-block">
+            <label>KM atual</label>
+            <input type="number" step="1" name="kmAtual" ng-model="vm.kmAtual" min="0" />
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedEstadoConservacao" required>
+              <md-option ng-repeat="estadoConservacao in vm.estadosConservacao" value="{{estadoConservacao.value}}" placeholder="Estado geral de conservação">
+                <md-icon md-font-set="material-icons">{{estadoConservacao.icon}}</md-icon>
+                {{estadoConservacao.label}}
+              </md-option>
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <md-select ng-model="vm.selectedEstadoPneus" required>
+              <md-select-label>
+                <md-icon md-font-set="material-icons">{{estadoPneus.icon}}</md-icon>
+              </md-select-label>
+              <md-option ng-repeat="estadoPneus in vm.estadosPneus" value="{{estadoPneus.value}}" placeholder="Estado dos pneus">
+                <md-icon md-font-set="material-icons">{{estadoPneus.icon}}</md-icon>
+                {{estadoPneus.label}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container>
+            <md-switch ng-model="vm.ehUnicoDono">Único dono?</md-switch>
+          </md-input-container>
+
+          <md-input-container>
+            <md-switch ng-model="vm.temGarantia">Garantia de fábrica?</md-switch>
+          </md-input-container>
+
+          <md-input-container>
+            <md-switch ng-model="vm.temMultas">Tem multas?</md-switch>
+          </md-input-container>
+
+          <md-input-container>
+            <md-switch ng-model="vm.passaVistoria">Passa na vistoria?</md-switch>
+          </md-input-container>
+
+          <md-input-container>
+            <md-switch ng-model="vm.ipvaQuitado">IPVA quitado?</md-switch>
+          </md-input-container>
+
+          <md-input-container>
+            <md-switch ng-model="vm.temAcessorios">Tem acessórios?</md-switch>
+          </md-input-container>
+
+          <md-input-container class="md-block" ng-if="vm.temAcessorios">
+            <label>R$ total de acessórios</label>
+            <input type="number" step="any" name="valorAcessorios" ng-model="vm.valorAcessorios" min="1" max="50000" required />
+          </md-input-container>
+
+        </div>
+
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center" ng-show="vm.selectedVeiculo">
+          <md-button class="md-primary" ng-click="vm.calcularPi()">Ver Tabela Picanço</md-button>
+          <md-button class="md-warn" ng-click="vm.cancelar()">Cancelar</md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card ng-if="vm.tabelaPicanco">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Tabela Picanço</span>
+            <span class="md-subhead">Valor sem acessórios</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div layout="row">Valor justo (mínimo): R$ {{vm.tabelaPicanco.minimo}}</div>
+          <div layout="row">Valor para anunciar: R$ {{vm.tabelaPicanco.anuncio}}</div>
+          <div layout="row">Valor majorado (+ difícil vender): R$ {{vm.tabelaPicanco.majorado}}</div>
+        </md-card-content>
+      </md-card>
+
+      <md-card ng-if="vm.tabelaPicanco.comAcessorios">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Tabela Picanço</span>
+            <span class="md-subhead">Valor com acessórios</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div layout="row">Valor justo (mínimo): R$ {{vm.tabelaPicanco.comAcessorios.minimo}}</div>
+          <div layout="row">Valor para anunciar: R$ {{vm.tabelaPicanco.comAcessorios.anuncio}}</div>
+          <div layout="row">Valor majorado (+ difícil vender): R$ {{vm.tabelaPicanco.comAcessorios.majorado}}</div>
+        </md-card-content>
+      </md-card>
+
+      <md-card ng-if="vm.selectedVeiculo">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">FIPE</span>
+            <span class="md-subhead">Valor na tabela FIPE</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          {{vm.selectedVeiculo.preco}}
+        </md-card-content>
+      </md-card>
+
+    </md-content>
+
+  </div>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- MomentJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+  <!-- App scripts -->
+  <script src="scripts/app.setup.js"></script>
+
+  <!-- AngularJS Scripts -->
+  <script src="scripts/app.module.js"></script>
+  <script src="scripts/app.config.js"></script>
+  <script src="scripts/home.controller.js"></script>
+
+</body>
+
+</html>
