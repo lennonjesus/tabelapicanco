@@ -105,38 +105,40 @@
 
     function calcularPi() {
 
-        var inicioAno = false;
+        vm.tabelaPicanco = {};
+
+        var inicioAno = moment().month() <= 3;
 
         var valorFipe = vm.selectedVeiculo.preco.substr(0, vm.selectedVeiculo.preco.indexOf(',')).replace("R$", "").replace(".", "").trim();
 
-        var valor = minPercent(valorFipe, 30); // FIPE - 30%
+        var valor = minPercent(valorFipe, 25); // FIPE - 25%
 
         if (vm.kmAtual <= 10000) {
-          valor = plusPercent(valor, 10); // veiculo zero + 10%
+          valor = plusPercent(valor, 12); // veiculo zero
         }
 
         if (vm.kmAtual <= 20000 && vm.kmAtual > 10000) {
-          valor = plusPercent(valor, 7); // veiculo novo + 7%
+          valor = plusPercent(valor, 7); // veiculo novo
         }
 
         if (vm.kmAtual <= 35000 && vm.kmAtual > 20000) {
-          valor = plusPercent(valor, 5); // veiculo semi novo + 5
+          valor = plusPercent(valor, 5); // veiculo semi novo
         }
 
         if (vm.kmAtual <= 60000 && vm.kmAtual > 35000) {
-          valor = plusPercent(valor, 0); // veiculo usado 0%
+          valor = plusPercent(valor, 1); // veiculo usado
         }
 
         if (vm.kmAtual <= 100000 && vm.kmAtual > 60000) {
-          valor = minPercent(valor, 3); // veiculo velho -3%
+          valor = minPercent(valor, 1); // veiculo velho
         }
 
         if (vm.kmAtual > 100000) {
-          valor = minPercent(valor, 5); // veiculo bem velho -5%
+          valor = minPercent(valor, 5); // veiculo bem velho
         }
 
         if (vm.ehUnicoDono) {
-          valor = plusPercent(valor, 0);
+          valor = plusPercent(valor, 3);
         }
 
         switch (vm.selectedEstadoConservacao) {
@@ -145,6 +147,7 @@
           break;
         }
         case 'riscos': {
+          valor = plusPercent(valor, 1);
           break;
         }
         case 'quebras': {
@@ -198,13 +201,7 @@
           valor = minPercent(valor, 3);
         }
 
-        console.log(valor);
-
         valor = Math.round(valor);
-
-        console.log(valor);
-
-        console.log('=== Sem acessórios ===\n');
 
         vm.tabelaPicanco = {
           minimo: valor,

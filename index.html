@@ -42,7 +42,7 @@
         </md-card-title>
         <md-card-content>
           <md-input-container class="md-block">
-            <md-select ng-model="vm.selectedFabricanteId" required>
+            <md-select ng-model="vm.selectedFabricanteId" ng-change="vm.selectedModeloId = null" required>
               <md-option ng-repeat="fabricante in vm.fabricantes" value="{{fabricante.id}}" placeholder="Selecione o fabricante">
                 {{fabricante.name}}
               </md-option>
