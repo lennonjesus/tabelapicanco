@@ -3,10 +3,7 @@ var cacheName = 'tabelapicanco-cache-intall-v1';
 var filesToCache = [
   'index.html',
   'tabelapicanco.ico',
-  'scripts/app.config.js',
-  'scripts/app.module.js',
-  'scripts/app.setup.js',
-  'scripts/home.controller.js',
+  'bundle.js',
   'styles/app.css',
   'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
   'https://fonts.googleapis.com/icon?family=Material+Icons',

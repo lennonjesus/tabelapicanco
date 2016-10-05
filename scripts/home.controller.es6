@@ -8,6 +8,7 @@
 
     const URL_API = 'https://fipeapi.appspot.com/api/1';
 
+    /*jshint validthis:true */
     var vm = this;
 
     vm.init = init;
