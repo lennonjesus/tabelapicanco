@@ -46,10 +46,22 @@
       vm.ehUnicoDono = true;
       vm.passaVistoria = true;
       vm.ipvaQuitado = true;
+      vm.temGarantia = false;
+      vm.temMultas = false;
+      vm.temAcessorios = false;
+      vm.valorAcessorios = null;
 
       vm.selectedFabricanteId = null;
       vm.selectedModeloId = null;
       vm.selectedAnoModeloId = null;
+      vm.selectedVeiculo = null;
+
+      vm.kmAtual = null;
+      // vm.selectedEstadoConservacao = null;
+      // vm.selectedEstadoPneus = null;
+
+      vm.tabelaPicanco = null;
+      vm.tabelaPicancoComAcessorios = null;
 
     }
 

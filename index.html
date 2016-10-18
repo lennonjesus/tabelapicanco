@@ -67,17 +67,17 @@
 
           <div ng-show="vm.selectedVeiculo">
 
-          <md-input-container class="md-block">
-            <label>KM atual</label>
-            <input type="number" step="1" name="kmAtual" ng-model="vm.kmAtual" min="0" />
-          </md-input-container>
+            <md-input-container class="md-block">
+              <label>KM atual</label>
+              <input type="number" step="1" name="kmAtual" ng-model="vm.kmAtual" min="0" />
+            </md-input-container>
 
-          <md-input-container class="md-block">
-            <md-select ng-model="vm.selectedEstadoConservacao" required>
-              <md-option ng-repeat="estadoConservacao in vm.estadosConservacao" value="{{estadoConservacao.value}}" placeholder="Estado geral de conservação">
-                <md-icon md-font-set="material-icons">{{estadoConservacao.icon}}</md-icon>
-                {{estadoConservacao.label}}
-              </md-option>
+            <md-input-container class="md-block">
+              <md-select ng-model="vm.selectedEstadoConservacao" required>
+                <md-option ng-repeat="estadoConservacao in vm.estadosConservacao" value="{{estadoConservacao.value}}" placeholder="Estado geral de conservação">
+                  <md-icon md-font-set="material-icons">{{estadoConservacao.icon}}</md-icon>
+                  {{estadoConservacao.label}}
+                </md-option>
               </md-option>
             </md-select>
           </md-input-container>
