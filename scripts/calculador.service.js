@@ -9,16 +9,30 @@
 
     var service = {
       calcular: calcular
-    }
+    };
 
     return service;
 
-    function calcular() {
-      tabelaPicanco = {};
+    function calcular(parametros) {
+      var tabelaPicanco = {};
+
+      var veiculo = parametros.veiculo;
+      var kmAtual = parametros.kmAtual;
+      var ehUnicoDono = parametros.ehUnicoDono;
+      var estadoConservacao = parametros.estadoConservacao;
+      var estadoPneus = parametros.estadoPneus;
+      var temGarantia = parametros.temGarantia;
+      var temMultas = parametros.temMultas;
+      var passaVistoria = parametros.passaVistoria;
+      var ipvaQuitado = parametros.ipvaQuitado;
+      var valorAcessorios = parametros.valorAcessorios;
 
       var inicioAno = moment().month() <= 3;
 
-      var valorFipe = selectedVeiculo.preco.substr(0, selectedVeiculo.preco.indexOf(',')).replace(BRL, "").replace(".", "").trim();
+      var valorFipe = veiculo.preco.substr(0, veiculo.preco.indexOf(','))
+        .replace(BRL, "")
+        .replace(".", "")
+        .trim();
 
       var valor = minPercent(valorFipe, 25); // FIPE - 25%
 
@@ -50,7 +64,7 @@
         valor = plusPercent(valor, 3);
       }
 
-      switch (selectedEstadoConservacao) {
+      switch (estadoConservacao) {
       case 'impecavel': {
         valor = plusPercent(valor, 3);
         break;
@@ -72,7 +86,7 @@
       }
       }
 
-      switch (selectedEstadoPneus) {
+      switch (estadoPneus) {
       case 'novos': {
         valor = plusPercent(valor, 5);
         break;
@@ -98,7 +112,7 @@
         valor = minPercent(valor, 3);
       }
 
-      if (!passaNaVistoria) {
+      if (!passaVistoria) {
         valor = minPercent(valor, 3);
       }
 
@@ -127,6 +141,16 @@
           majorado: plusPercent(valorComAcessorios, 15)
         };
       }
+
+      return tabelaPicanco;
+    }
+
+    function plusPercent(val, percent) {
+      return val + (val * percent) / 100;
+    }
+
+    function minPercent(val, percent) {
+      return val - (val * percent) / 100;
     }
 
   }
