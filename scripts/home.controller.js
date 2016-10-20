@@ -4,7 +4,7 @@
 
   angular.module('tabelapicanco').controller('HomeController', homeController);
 
-  function homeController($http, FipeService, CalculadorService) {
+  function homeController(FipeService, CalculadorService) {
 
     /*jshint validthis:true */
     var vm = this;
@@ -122,7 +122,7 @@
 
     function calcularPi() {
 
-      var parametros = {
+      CalculadorService.calcular({
         veiculo: vm.selectedVeiculo,
         kmAtual: vm.kmAtual,
         ehUnicoDono: vm.ehUnicoDono,
@@ -133,9 +133,9 @@
         passaVistoria: vm.passaVistoria,
         ipvaQuitado: vm.ipvaQuitado,
         valorAcessorios: vm.valorAcessorios
-      };
-
-      vm.tabelaPicanco = CalculadorService.calcular(parametros);
+      }).then(function (data) {
+        vm.tabelaPicanco = data;
+      });
     }
 }
 })();
