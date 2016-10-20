@@ -1,5 +1,5 @@
 var cachePrefix = 'tabelapicanco'
-var cacheVersion = 3;
+var cacheVersion = 4;
 var cacheName = cachePrefix + '-cache-v' + cacheVersion;
 
 var filesToCache = [
@@ -14,7 +14,12 @@ var filesToCache = [
   'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js',
   'index.html',
   'tabelapicanco.ico',
-  'bundle.js',
+  'scripts/app.setup.js',
+  'scripts/app.module.js',
+  'scripts/app.config.js',
+  'scripts/fipe.service.js',
+  'scripts/calculador.service.js',
+  'scripts/home.controller.js',
   'styles/app.css'
 ];
 
