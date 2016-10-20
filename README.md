@@ -36,6 +36,10 @@ Requests](https://github.com/lennonjesus/tabelapicanco/pulls) welcome! Thanks!
 - [ ] minify stylesheet
 - [ ] improves UI feedbacks
 
+### Credits
+
+- Thanks to Lucas Ferreira for [API de Consulta Tabela FIPE](http://fipeapi.appspot.com)
+
 ## License
 
 [Creative Commons Attribution License](https://creativecommons.org/licenses/by/4.0/)
