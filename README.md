@@ -1,4 +1,4 @@
-# Tabela Picanço [Site](https://lennonjesus.gitlab.io/tabelapicanco)
+# Tabela Picanço [Site](https://tabela.appmotociclistico.com)
 
 Progressive Web Application (PWA) for discover the best price to buy or sell
 your motorcycle.
