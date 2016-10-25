@@ -44,24 +44,27 @@
         </md-card-title>
         <md-card-content>
           <md-input-container class="md-block">
+            <label>Selecione o fabricante</label>
             <md-select ng-model="vm.selectedFabricanteId" ng-change="vm.selectedModeloId = null" required>
-              <md-option ng-repeat="fabricante in vm.fabricantes" value="{{fabricante.id}}" placeholder="Selecione o fabricante">
+              <md-option ng-repeat="fabricante in vm.fabricantes" value="{{fabricante.id}}">
                 {{fabricante.name}}
               </md-option>
             </md-select>
           </md-input-container>
 
           <md-input-container class="md-block">
+            <label>Selecione o modelo</label>
             <md-select ng-model="vm.selectedModeloId" md-on-open="vm.loadModelos()" ng-show="vm.selectedFabricanteId" required>
-              <md-option ng-repeat="modelo in vm.modelos" value="{{modelo.id}}" placeholder="Selecione o modelo">
+              <md-option ng-repeat="modelo in vm.modelos" value="{{modelo.id}}">
                 {{modelo.name}}
               </md-option>
             </md-select>
           </md-input-container>
 
           <md-input-container class="md-block">
+            <label>Selecione o ano do modelo</label>
             <md-select ng-model="vm.selectedAnoModeloId" md-on-open="vm.loadAnosModelo()" ng-show="vm.selectedModeloId" ng-change="vm.loadDadosVeiculo()" required>
-              <md-option ng-repeat="anoModelo in vm.anosModelo" value="{{anoModelo.id}}" placeholder="Selecione o ano do modelo">
+              <md-option ng-repeat="anoModelo in vm.anosModelo" value="{{anoModelo.id}}">
                 {{anoModelo.name}}
               </md-option>
             </md-select>
