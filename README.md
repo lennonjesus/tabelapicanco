@@ -20,7 +20,12 @@ npm install
 ### Run
 
 ```
-npm start lite
+npm start
+```
+
+### Build for production
+```
+npm run build
 ```
 
 ### Help! :-)

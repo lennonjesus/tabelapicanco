@@ -5,7 +5,6 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lite": "lite-server",
     "start": "webpack-dev-server --port 3000",
     "build": "webpack -p --config ./webpack.prod.config.js --progress --profile --colors --optimize-minimize"
   },
@@ -20,7 +19,6 @@
     "babel-preset-latest": "^6.16.0",
     "jshint": "^2.9.3",
     "jshint-loader": "^0.8.3",
-    "lite-server": "^2.2.2",
     "ng-annotate-loader": "^0.2.0",
     "node-libs-browser": "^1.0.0",
     "strip-loader": "^0.1.2",
