@@ -4,7 +4,7 @@
 
   angular.module('tabelapicanco').controller('HomeController', homeController);
 
-  function homeController(FipeService, CalculadorService) {
+  function homeController(FipeService, CalculadorService, blockUI) {
     'ngInject';
 
     /*jshint validthis:true */
@@ -123,6 +123,10 @@
 
     function calcularPi() {
 
+      blockUI.start({
+        message: 'Processando dados...'
+      });
+
       CalculadorService.calcular({
         veiculo: vm.selectedVeiculo,
         kmAtual: vm.kmAtual,
@@ -136,6 +140,8 @@
         valorAcessorios: vm.valorAcessorios
       }).then(function (data) {
         vm.tabelaPicanco = data;
+
+        blockUI.stop();
       });
     }
 }

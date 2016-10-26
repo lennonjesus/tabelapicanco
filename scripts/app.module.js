@@ -2,6 +2,6 @@
 
   'use strict';
 
-  angular.module('tabelapicanco', ['ngMaterial']);
+  angular.module('tabelapicanco', ['ngMaterial', 'blockUI']);
 
 })();

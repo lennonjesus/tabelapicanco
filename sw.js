@@ -12,6 +12,8 @@ var filesToCache = [
   'https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js',
   'https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular-block-ui/0.2.2/angular-block-ui.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular-block-ui/0.2.2/angular-block-ui.min.css',
   'index.html',
   'tabelapicanco.ico',
   'build/bundle.js',
