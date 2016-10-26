@@ -4,6 +4,7 @@
   angular.module('tabelapicanco').factory('CalculadorService', calculadorService);
 
   function calculadorService($http) {
+    'ngInject';
 
     var service = {
       calcular: calcular

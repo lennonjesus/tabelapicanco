@@ -5,6 +5,7 @@
   angular.module('tabelapicanco').factory('FipeService', fipeService);
 
   function fipeService($http) {
+    'ngInject';
 
     const URL_API = 'https://fipeapi.appspot.com/api/1';
 

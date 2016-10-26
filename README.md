@@ -31,8 +31,9 @@ Requests](https://github.com/lennonjesus/tabelapicanco/pulls) welcome! Thanks!
 ### TODO
 
 - [ ] add tests
-- [ ] add webpack
-- [ ] concat and minify javascript
+- [x] ~~add webpack~~
+- [x] ~~concat and minify javascript~~
+- [ ] minify html
 - [ ] minify stylesheet
 - [ ] improves UI feedbacks
 

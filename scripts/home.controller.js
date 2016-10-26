@@ -5,6 +5,7 @@
   angular.module('tabelapicanco').controller('HomeController', homeController);
 
   function homeController(FipeService, CalculadorService) {
+    'ngInject';
 
     /*jshint validthis:true */
     var vm = this;
