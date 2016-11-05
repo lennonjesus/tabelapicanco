@@ -40,7 +40,7 @@ Requests](https://github.com/lennonjesus/tabelapicanco/pulls) welcome! Thanks!
 - [x] ~~concat and minify javascript~~
 - [ ] minify html
 - [ ] minify stylesheet
-- [ ] improves UI feedbacks
+- [ ] ~~improves UI feedbacks~~
 
 ### Credits
 
