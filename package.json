@@ -9,7 +9,7 @@
     "build": "webpack -p --config ./webpack.prod.config.js --progress --profile --colors --optimize-minimize"
   },
   "author": "Lennon Jesus <lennon.jesus@gmail.com>",
-  "license": "MIT",
+  "license": "CC-BY-4.0",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
