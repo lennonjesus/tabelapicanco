@@ -1,5 +1,5 @@
 var cachePrefix = 'tabelapicanco'
-var cacheVersion = 5;
+var cacheVersion = 6;
 var cacheName = cachePrefix + '-cache-v' + cacheVersion;
 
 var filesToCache = [
