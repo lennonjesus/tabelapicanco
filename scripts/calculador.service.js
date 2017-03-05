@@ -13,7 +13,7 @@
     return service;
 
     function calcular(parametros) {
-      return $http.post('https://tabelapicanco.appspot.com/calc', parametros)
+      return $http.post('https://tabelapicanco-api.herokuapp.com/calc', parametros)
         .then(json => json.data);
     }
 
